@@ -195,7 +195,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Create a Keymap for NeoTree
-vim.keymap.set('n', '<leader>t', '<Cmd>Neotree toggle<CR>')
+vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -635,7 +635,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
