@@ -143,9 +143,7 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-<<<<<<< HEAD
 -- Sets how neovim will display certain whitespace characters in the editor.
-=======
 -- diff files
 vim.keymap.set('n', '<leader>df', '<cmd>windo diffthis<CR>', { desc = '[D]iff This' })
 vim.keymap.set('n', '<leader>ds', '<cmd>windo diffoff<CR>', { desc = '[D]iff Stop' })
@@ -154,7 +152,6 @@ vim.keymap.set('n', '<leader>ds', '<cmd>windo diffoff<CR>', { desc = '[D]iff Sto
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true })
 
 -- Sets how neovim will display certain whitespace in the editor.
->>>>>>> master
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
