@@ -140,6 +140,13 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- diff files
+vim.keymap.set('n', '<leader>df', '<cmd>windo diffthis<CR>', { desc = '[D]iff This' })
+vim.keymap.set('n', '<leader>ds', '<cmd>windo diffoff<CR>', { desc = '[D]iff Stop' })
+
+-- create a keybinding for <Esc>
+vim.keymap.set('i', 'jj', '<Esc>', { noremap = true })
+
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -147,8 +154,6 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
@@ -196,6 +201,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Create a Keymap for NeoTree
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>')
+
+-- Create a Keymap for Noice
+vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -381,6 +389,7 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       require('telescope').load_extension 'neoclip'
+      require('telescope').load_extension 'noice'
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
