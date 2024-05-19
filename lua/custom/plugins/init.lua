@@ -27,7 +27,5 @@ vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noi
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader>s.', '<cmd>Telescope find_files hidden=true<CR>', { desc = '[S]earch [H]idden Files' })
-require('telescope').load_extension 'neoclip'
-require('telescope').load_extension 'noice'
 
 return {}
