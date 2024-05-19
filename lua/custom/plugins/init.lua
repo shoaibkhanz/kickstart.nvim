@@ -22,7 +22,9 @@ vim.keymap.set('n', '<leader>e', '<Cmd>Neotree toggle<CR>')
 
 -- Create a Keymap for Noice
 vim.keymap.set('n', '<leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' })
-
+vim.keymap.set('v', '<leader>tt', function()
+  require('nvim-python-repl').send_visual_to_repl()
+end, { desc = 'Send visual selection to REPL' })
 -- See `:help telescope.builtin`
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
