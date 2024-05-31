@@ -3,7 +3,7 @@ return {
   version = '*',
   opts = {
     direction = 'float',
-    open_mapping = [[<c-\>]],
+    -- open_mapping = [[<c-,>]],
     auto_scroll = true, -- automatically scroll to the bottom on terminal output
     shade_terminals = true, -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
     shading_factor = '80', -- the percentage by which to lighten terminal background, default: -30 (gets multiplied by -3 if background is light)
@@ -27,6 +27,7 @@ return {
       -- zindex = <value>,
       title_pos = 'left',
     },
+    keymapping = { vim.keymap.set('n', '<leader>,', '<CMD>ToggleTerm<CR>') },
   },
   config = true,
 }
