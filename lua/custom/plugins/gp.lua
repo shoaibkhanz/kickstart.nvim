@@ -4,7 +4,23 @@ return {
   config = function()
     local conf = {
       -- For customization, refer to Install > Configuration in the Documentation/Readme
-      openai_api_key = { 'op', 'read', 'op://Personal/API Credential/credential' },
+      -- openai_api_key = { 'op', 'read', 'op://Personal/API Credential/credential' },
+      providers = {
+        openai = {
+          disable = true,
+          endpoint = 'https://api.openai.com/v1/chat/completions',
+          -- secret = os.getenv("OPENAI_API_KEY"),
+        },
+        copilot = {
+          disable = false,
+          endpoint = 'https://api.githubcopilot.com/chat/completions',
+          secret = {
+            'bash',
+            '-c',
+            "cat ~/.config/github-copilot/hosts.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+          },
+        },
+      },
     }
 
     -- Define keymaps in Lua correctly, outside of the conf table
