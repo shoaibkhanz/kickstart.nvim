@@ -1,42 +1,66 @@
 return {
-
-  -- add folding range to capabilities
-  {
-    'neovim/nvim-lspconfig',
-    opts = {
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-    },
-  },
-
+  -- nvim-ufo plugin configuration
   {
     'kevinhwang91/nvim-ufo',
     dependencies = { 'kevinhwang91/promise-async' },
-    event = 'BufRead',
-    opts = {},
+    event = 'BufReadPost',
     config = function()
-      -- Fold options
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-      vim.o.foldcolumn = '1' -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      -- Folding options
+      vim.o.foldcolumn = '1' -- '0' is also acceptable
+      vim.o.foldlevel = 99 -- Using ufo provider requires a large value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-      require('ufo').setup()
-    end,
-    init = function()
-      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', function()
-        require('ufo').openAllFolds()
-      end)
-      vim.keymap.set('n', 'zM', function()
-        require('ufo').closeAllFolds()
-      end)
+
+      -- Key mappings for folding
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      -- Initialize nvim-ufo with provider_selector
+      require('ufo').setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          if filetype == 'neo-tree' then
+            return '' -- Disable nvim-ufo for neo-tree
+          else
+            return { 'lsp', 'indent' }
+          end
+        end,
+      }
+
+      -- Option 2: nvim-lspconfig as LSP client
+      -- Add foldingRange to capabilities
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+
+      -- Use the capabilities in all LSP servers
+      local lspconfig = require 'lspconfig'
+      local servers = lspconfig.util.available_servers()
+
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup {
+          capabilities = capabilities,
+          -- You can add other server-specific settings here
+        }
+      end
+
+      -- Disable folding in neo-tree buffers
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'neo-tree',
+        callback = function()
+          vim.opt_local.foldenable = false
+          vim.opt_local.foldmethod = 'manual'
+        end,
+      })
     end,
   },
+
+  -- nvim-lspconfig plugin (ensure it's included)
+  {
+    'neovim/nvim-lspconfig',
+    -- You can add your LSP configurations here if needed
+  },
+
+  -- Other plugins...
 }
