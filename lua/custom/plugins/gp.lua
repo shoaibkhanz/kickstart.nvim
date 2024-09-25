@@ -4,15 +4,15 @@ return {
   config = function()
     local conf = {
       -- For customization, refer to Install > Configuration in the Documentation/Readme
-      -- openai_api_key = { 'op', 'read', 'op://Personal/API Credential/credential' },
+      openai_api_key = { 'op', 'read', 'op://Personal/API Credential/credential' },
       providers = {
         openai = {
-          disable = true,
+          disable = false,
           endpoint = 'https://api.openai.com/v1/chat/completions',
           -- secret = os.getenv("OPENAI_API_KEY"),
         },
         copilot = {
-          disable = false,
+          disable = true,
           endpoint = 'https://api.githubcopilot.com/chat/completions',
           secret = {
             'bash',
