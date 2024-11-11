@@ -30,4 +30,15 @@ local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set('n', '<leader>s.', '<cmd>Telescope find_files hidden=true<CR>', { desc = '[S]earch [H]idden Files' })
 
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+-- Move the cursor using io and jk rather than arrows
+vim.keymap.set('i', '<C-i>', '<Left>')
+vim.keymap.set('i', '<C-o>', '<Right>')
+vim.keymap.set('i', '<C-k>', '<Up>')
+vim.keymap.set('i', '<C-j>', '<Down>')
+
 return {}
