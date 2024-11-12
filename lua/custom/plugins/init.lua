@@ -41,4 +41,7 @@ vim.keymap.set('i', '<C-o>', '<Right>')
 vim.keymap.set('i', '<C-k>', '<Up>')
 vim.keymap.set('i', '<C-j>', '<Down>')
 
+-- git blame
+vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = 'git blame line' })
+
 return {}
