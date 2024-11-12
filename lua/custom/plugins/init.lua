@@ -44,4 +44,8 @@ vim.keymap.set('i', '<C-j>', '<Down>')
 -- git blame
 vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame_line<CR>', { desc = 'git blame line' })
 
+-- avante
+vim.keymap.set('n', '<leader>ao', '<cmd>AvanteSwitchProvider openai<CR>', { desc = 'switch to openai as provider in avante' })
+vim.keymap.set('n', '<leader>ag', '<cmd>AvanteSwitchProvider copilot<CR>', { desc = 'switch to github copilot as provider in avante' })
+
 return {}
