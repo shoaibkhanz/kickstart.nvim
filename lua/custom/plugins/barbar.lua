@@ -37,11 +37,11 @@ return {
     preset = 'powerline',
   },
   keymaps = {
-    vim.keymap.set('n', '˙', '<cmd>BufferPrevious<CR>'), -- this is alt + h
-    vim.keymap.set('n', '¬', '<cmd>BufferNext<CR>'), -- this is alt + l
+    vim.keymap.set('n', '~', '<cmd>BufferPrevious<CR>'), -- this is alt + n
+    vim.keymap.set('n', 'Æ', '<cmd>BufferNext<CR>'), -- this is alt + "
     -- Re-order to previous/next
-    vim.keymap.set('n', '∆', '<cmd>BufferMovePrevious<CR>'), -- this is alt + j
-    vim.keymap.set('n', '˚', '<cmd>BufferMoveNext<CR>'), -- this is alt + k
+    vim.keymap.set('n', 'µ', '<cmd>BufferMovePrevious<CR>'), -- this is alt + m
+    vim.keymap.set('n', 'æ', '<cmd>BufferMoveNext<CR>'), -- this is alt + '
   },
   version = '^1.0.0', -- optional: only update when a new 1.x version is released
 }
